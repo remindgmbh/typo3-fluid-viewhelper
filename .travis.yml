@@ -21,7 +21,7 @@ notifications:
 
 before_script:
     - composer self-update --no-progress --quiet --no-interaction
-    - composer install --no-progress --quiet --no-interaction
+    - composer update --no-progress --quiet --no-interaction
 
 script:
     - composer run test
