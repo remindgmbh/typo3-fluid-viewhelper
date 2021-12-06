@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 use function str_replace;
+
 use function strpos;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Description of PhoneNumberViewHelper
@@ -47,7 +47,7 @@ class PhoneNumberViewHelper extends AbstractViewHelper
             return $number;
         }
 
-        $numberReplaced = str_replace([' ', '/'], ['',' '], $number);
+        $numberReplaced = str_replace([' ', '/'], ['', ' '], $number);
 
         return $numberReplaced;
     }

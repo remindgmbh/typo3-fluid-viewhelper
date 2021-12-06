@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 use function time;
+
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Description of ContentTimerViewHelper
@@ -25,11 +25,11 @@ class ContentTimerViewHelper extends AbstractViewHelper
      */
     public const ARGUMENT_END = 'end';
 
-   /**
-    * As this ViewHelper renders HTML, the output must not be escaped.
-    *
-    * @var bool
-    */
+    /**
+     * As this ViewHelper renders HTML, the output must not be escaped.
+     *
+     * @var bool
+     */
     protected $escapeOutput = false;
 
     /**
@@ -65,7 +65,7 @@ class ContentTimerViewHelper extends AbstractViewHelper
         /* Check conditions */
         if ($start !== 0 && $start > $now) {
             $html = '';
-        } else if ($end !== 0 && $end < $now) {
+        } elseif ($end !== 0 && $end < $now) {
             $html = '';
         } else {
             $html = $this->renderChildren();
