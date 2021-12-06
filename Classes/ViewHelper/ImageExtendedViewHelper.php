@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use function array_merge;
 use Exception;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\ProcessedFile;
-
 use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
+
+use function array_merge;
 
 /**
  * ImageExtendedViewHelper
@@ -107,6 +107,9 @@ class ImageExtendedViewHelper extends ImageViewHelper
     /**
      * Resizes a given image (if required) and renders the respective img tag.
      *
+     * @todo handle and log exceptions
+     * @todo typecheck parameters
+     *
      * @see https://docs.typo3.org/typo3cms/TyposcriptReference/ContentObjects/Image/
      * @return string Rendered tag
      */
@@ -133,7 +136,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
         try {
             /* @var $image FileInterface */
             $image = $this->imageService->getImage(
-                $this->arguments['src'],
+                (string) $this->arguments['src'],
                 $this->arguments['image'],
                 (bool) $this->arguments['treatIdAsReference']
             );
@@ -187,6 +190,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
      * Set src, srcset and (if lazy mode is enabled) data-srcset
      *
      * @param FileInterface $image
+     * @return void
      */
     public function addDataSrcset(FileInterface $image): void
     {
@@ -228,6 +232,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
      * Set data light box image (if light box mode is enabled)
      *
      * @param FileInterface $image
+     * @return void
      */
     public function addDataLightBoxImage(FileInterface $image): void
     {
@@ -278,9 +283,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
             'maxHeight' => $config['maxHeight']
         ];
 
-        $processed = $this->imageService->applyProcessingInstructions($image, $instructions);
-
-        return $processed;
+        return $this->imageService->applyProcessingInstructions($image, $instructions);
     }
 
     /**
@@ -291,8 +294,6 @@ class ImageExtendedViewHelper extends ImageViewHelper
      */
     protected function getProssedImageUri(ProcessedFile $processedImage): string
     {
-        $uri = $this->imageService->getImageUri($processedImage, $this->arguments['absolute']);
-
-        return $uri;
+        return $this->imageService->getImageUri($processedImage, $this->arguments['absolute']);
     }
 }
