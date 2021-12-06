@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use Remind\RmndViewHelper\ViewHelper\HasIpAddressViewHelper;
-
 /**
  * Description of HasNotIpAddressViewHelper
  */

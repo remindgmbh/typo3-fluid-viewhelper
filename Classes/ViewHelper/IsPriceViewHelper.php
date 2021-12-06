@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 use function preg_match;
+
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * Description of IsPriceViewHelper

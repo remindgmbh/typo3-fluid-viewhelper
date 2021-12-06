@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
+use function array_merge;
 use Exception;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\ProcessedFile;
-use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
 
-use function array_merge;
+use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
 
 /**
  * ImageExtendedViewHelper
@@ -72,7 +72,6 @@ class ImageExtendedViewHelper extends ImageViewHelper
      * @var bool
      */
     protected $escapeOutput = false;
-
 
     /**
      * Register arguments.

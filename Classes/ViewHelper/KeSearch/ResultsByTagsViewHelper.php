@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper\KeSearch;
 
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 use function count;
+
 use function explode;
 use function is_array;
 use function str_replace;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * ResultsByTagsViewHelper

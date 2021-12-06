@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
+use Closure;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3\CMS\Fluid\ViewHelpers\Format\NumberViewHelper;
-use Closure;
 
 /**
  *
