@@ -48,7 +48,6 @@ class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
             ->method('render')
             ->willReturn('text/x-php');
 
-
         $this->assertSame('text/x-php', $this->viewHelper->render());
     }
 }

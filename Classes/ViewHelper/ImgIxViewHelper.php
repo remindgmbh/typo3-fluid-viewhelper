@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
-
 use function http_build_query;
+
 use function str_replace;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * This viewhelper converts the given arguments into an imgix service url.
