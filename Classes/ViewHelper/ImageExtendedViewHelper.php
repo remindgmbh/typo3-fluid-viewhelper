@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Resource\ProcessedFile;
 use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
 
 use function array_merge;
+use function filter_var;
 
 /**
  * ImageExtendedViewHelper
@@ -107,7 +108,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
     /**
      * Resizes a given image (if required) and renders the respective img tag.
      *
-     * @todo handle and log exceptions
+     * @todo handle and log exceptions instead of html dumping
      * @todo typecheck parameters
      *
      * @see https://docs.typo3.org/typo3cms/TyposcriptReference/ContentObjects/Image/
@@ -120,6 +121,15 @@ class ImageExtendedViewHelper extends ImageViewHelper
             return self::ERROR_STRING;
         }
 
+        /* In case the src is a parsable url */
+        if (filter_var($this->arguments['src'], FILTER_VALIDATE_URL) !== false) {
+            try {
+                return parent::render();
+            } catch (Exception $e) {
+                return '<!-- # ' . $e->getMessage() . ' # -->';
+            }
+        }
+
         /* Determine lazy mode */
         $isLazyMode = $this->arguments[self::ARGUMENT_LAZY_MODE] ?? false;
 
@@ -128,7 +138,8 @@ class ImageExtendedViewHelper extends ImageViewHelper
             try {
                 return parent::render();
             } catch (Exception $e) {
-                return '<!-- ' . $e->getMessage() . ' -->';
+                /* Dump error as html comment */
+                return '<!-- # ' . $e->getMessage() . ' # -->';
             }
         }
 
@@ -141,7 +152,8 @@ class ImageExtendedViewHelper extends ImageViewHelper
                 (bool) $this->arguments['treatIdAsReference']
             );
         } catch (Exception $e) {
-            return self::ERROR_STRING;
+            /* Dump error as html comment */
+            return '<!-- # ' . $e->getMessage() . ' # -->';
         }
 
         /* This should not happen */
@@ -162,6 +174,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
 
         /* Get preset alternative value */
         $alt = $image->getProperty('alternative');
+
         /* Don't override values set in template */
         if (empty($this->arguments['alt'])) {
             $this->tag->addAttribute('alt', $alt);
@@ -169,6 +182,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
 
         /* Get preset title value */
         $title = $image->getProperty('title');
+
         /* Don't override values set in template */
         if (empty($this->arguments['title']) && $title) {
             $this->tag->addAttribute('title', $title);
