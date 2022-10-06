@@ -196,8 +196,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
     protected function isRenderDefault(): bool
     {
         /* @todo check */
-        if(!empty($this->arguments['src']) && filter_var($this->arguments['src'], FILTER_VALIDATE_URL) !== false)
-        {
+        if (!empty($this->arguments['src']) && filter_var($this->arguments['src'], FILTER_VALIDATE_URL) !== false) {
             return true;
         }
 
@@ -206,7 +205,6 @@ class ImageExtendedViewHelper extends ImageViewHelper
 
         /* If not lazy or is backend */
         if (!$isLazyMode || TYPO3_MODE === 'BE') {
-
             return true;
         }
 
