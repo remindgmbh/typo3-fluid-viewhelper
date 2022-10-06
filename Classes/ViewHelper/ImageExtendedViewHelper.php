@@ -118,27 +118,15 @@ class ImageExtendedViewHelper extends ImageViewHelper
     {
         /* Mandatory arguments */
         if (empty($this->arguments['src']) && empty($this->arguments['image'])) {
+            /* Output html comment to source code for debugging */
             return self::ERROR_STRING;
         }
 
         /* In case the src is a parsable url */
-        if (filter_var($this->arguments['src'], FILTER_VALIDATE_URL) !== false) {
+        if ($this->isRenderDefault()) {
             try {
                 return parent::render();
             } catch (Exception $e) {
-                return '<!-- # ' . $e->getMessage() . ' # -->';
-            }
-        }
-
-        /* Determine lazy mode */
-        $isLazyMode = $this->arguments[self::ARGUMENT_LAZY_MODE] ?? false;
-
-        /* If not lazy or is backend */
-        if (!$isLazyMode || TYPO3_MODE === 'BE') {
-            try {
-                return parent::render();
-            } catch (Exception $e) {
-                /* Dump error as html comment */
                 return '<!-- # ' . $e->getMessage() . ' # -->';
             }
         }
@@ -198,6 +186,31 @@ class ImageExtendedViewHelper extends ImageViewHelper
 
         /* Render img tag */
         return $this->tag->render();
+    }
+
+    /**
+     * Check if the default image render method should be used
+     *
+     * @return bool
+     */
+    protected function isRenderDefault(): bool
+    {
+        /* @todo check */
+        if(!empty($this->arguments['src']) && filter_var($this->arguments['src'], FILTER_VALIDATE_URL) !== false)
+        {
+            return true;
+        }
+
+        /* Determine lazy mode */
+        $isLazyMode = $this->arguments[self::ARGUMENT_LAZY_MODE] ?? false;
+
+        /* If not lazy or is backend */
+        if (!$isLazyMode || TYPO3_MODE === 'BE') {
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
