@@ -29,7 +29,6 @@ class NumberFormatViewHelper extends NumberViewHelper
         Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): string {
-
         /* Copy of parent implementation */
         $decimals = $arguments['decimals'];
         $decimalSeparator = $arguments['decimalSeparator'];
