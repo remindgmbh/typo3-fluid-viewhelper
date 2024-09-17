@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use function sprintf;
-
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+
+use function sprintf;
 
 /**
  * RobotsTagViewHelper

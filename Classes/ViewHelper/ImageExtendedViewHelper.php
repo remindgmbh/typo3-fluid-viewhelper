@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use function array_merge;
 use Exception;
-use function filter_var;
 use TYPO3\CMS\Core\Resource\FileInterface;
-
 use TYPO3\CMS\Core\Resource\ProcessedFile;
 use TYPO3\CMS\Fluid\ViewHelpers\ImageViewHelper;
+
+use function array_merge;
+use function filter_var;
 
 /**
  * ImageExtendedViewHelper
@@ -196,8 +196,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
     protected function isRenderDefault(): bool
     {
         /* @todo check */
-        if(!empty($this->arguments['src']) && filter_var($this->arguments['src'], FILTER_VALIDATE_URL) !== false)
-        {
+        if (!empty($this->arguments['src']) && filter_var($this->arguments['src'], FILTER_VALIDATE_URL) !== false) {
             return true;
         }
 
@@ -205,8 +204,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
         $isLazyMode = $this->arguments[self::ARGUMENT_LAZY_MODE] ?? false;
 
         /* If not lazy or is backend */
-        if (!$isLazyMode ) {
-
+        if (!$isLazyMode) {
             return true;
         }
 
