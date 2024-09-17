@@ -205,7 +205,7 @@ class ImageExtendedViewHelper extends ImageViewHelper
         $isLazyMode = $this->arguments[self::ARGUMENT_LAZY_MODE] ?? false;
 
         /* If not lazy or is backend */
-        if (!$isLazyMode || TYPO3_MODE === 'BE') {
+        if (!$isLazyMode ) {
 
             return true;
         }
