@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\ViewHelper;
 
-use function str_replace;
-
-use function strpos;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+
+use function str_replace;
+use function strpos;
 
 /**
  * Description of PhoneNumberViewHelper
