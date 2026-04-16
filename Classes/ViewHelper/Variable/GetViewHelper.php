@@ -13,7 +13,6 @@ class GetViewHelper extends AbstractViewHelper
 {
     /**
      * The name argument.
-     * @var string
      */
     protected const ARGUMENT_NAME = 'name';
 

@@ -10,7 +10,6 @@ class SliderHasOneTextViewHelper extends AbstractViewHelper
 {
     /**
      * Argument name for slides.
-     * @var array
      */
     public const ARGUMENT_SLIDES = 'slides';
 
@@ -39,13 +38,13 @@ class SliderHasOneTextViewHelper extends AbstractViewHelper
 
         foreach ($slides as $item) {
             /* If slide has a headline add it to array */
-            if ($item['slide']['headline'] != '') {
+            if ($item['slide']['headline'] !== '') {
                 $textSlides[] = $item['slide']['headline'];
             }
         }
 
         /* If one headline in array return headline */
-        if (count($textSlides) == 1) {
+        if (count($textSlides) === 1) {
             return $textSlides[0];
         }
 

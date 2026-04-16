@@ -12,19 +12,10 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class HasSystemCategoryViewHelper extends AbstractViewHelper
 {
-    /**
-     * @var string
-     */
     public const ARGUMENT_RECORD_UID = 'recordUid';
 
-    /**
-     * @var string
-     */
     public const ARGUMENT_TABLE = 'table';
 
-    /**
-     * @var string
-     */
     public const ARGUMENT_CATEGORIES = 'categories';
 
     /**

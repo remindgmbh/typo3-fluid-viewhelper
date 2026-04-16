@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\Tests\Unit\ViewHelper;
 
-use PHPUnit\Framework\MockObject\MockObject;
 use Remind\RmndViewHelper\ViewHelper\GetMimeTypeViewHelper;
 use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
 
@@ -13,10 +12,27 @@ use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
  */
 class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
 {
-    /**
-     * @var GetMimeTypeViewHelper|MockObject
-     */
-    protected $viewHelper = null;
+    protected GetMimeTypeViewHelper|MockObject $viewHelper = null;
+
+    public function testMockRenderEmptyFileArgumentReturnsEmptyString(): void
+    {
+        $this->viewHelper
+            ->expects($this->once())
+            ->method('render')
+            ->willReturn('');
+
+        $this->assertSame('', $this->viewHelper->render());
+    }
+
+    public function testMockRenderFileArgumentReturnsCorrectMimeType(): void
+    {
+        $this->viewHelper
+            ->expects($this->once())
+            ->method('render')
+            ->willReturn('text/x-php');
+
+        $this->assertSame('text/x-php', $this->viewHelper->render());
+    }
 
     protected function setUp(): void
     {
@@ -29,25 +45,5 @@ class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
         $this->injectDependenciesIntoViewHelper($this->viewHelper);
 
         $this->viewHelper->initializeArguments();
-    }
-
-    public function testMockRenderEmptyFileArgumentReturnsEmptyString()
-    {
-        $this->viewHelper
-            ->expects($this->once())
-            ->method('render')
-            ->willReturn('');
-
-        $this->assertSame('', $this->viewHelper->render());
-    }
-
-    public function testMockRenderFileArgumentReturnsCorrectMimeType()
-    {
-        $this->viewHelper
-            ->expects($this->once())
-            ->method('render')
-            ->willReturn('text/x-php');
-
-        $this->assertSame('text/x-php', $this->viewHelper->render());
     }
 }

@@ -18,28 +18,24 @@ class ReCaptchaViewHelper extends AbstractViewHelper
 
     /**
      * Name of the target id argument.
-     * @var string
      */
     public const ARGUMENT_TARGET_ID = 'targetId';
 
     /**
      * Name of the field uid argument.
-     * @var string
      */
     public const ARGUMENT_FIELD_UID = 'fieldUid';
 
     /**
      * Variable / index name for TYPO3 additional header data.
-     * @var string
      */
     public const KEY_ADDITIONAL_HEADER_DATA = 'rmndJhCaptcha';
 
     /**
      * As this ViewHelper renders HTML, the output must not be escaped.
      *
-     * @var bool
      */
-    protected $escapeOutput = false;
+    protected bool $escapeOutput = false;
 
     /**
      * Register arguments.

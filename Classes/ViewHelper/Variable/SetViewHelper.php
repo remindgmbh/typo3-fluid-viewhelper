@@ -13,13 +13,11 @@ class SetViewHelper extends AbstractViewHelper
 {
     /**
      * The name argument.
-     * @var string
      */
     protected const ARGUMENT_NAME = 'name';
 
     /**
      * The value argument.
-     * @var string
      */
     protected const ARGUMENT_VALUE = 'value';
 
