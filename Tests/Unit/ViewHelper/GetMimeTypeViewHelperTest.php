@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Remind\RmndViewHelper\Tests\Unit\ViewHelper;
 
 use Remind\RmndViewHelper\ViewHelper\GetMimeTypeViewHelper;
-use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Description of GetMimeTypeViewHelperTest
  */
-class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
+class GetMimeTypeViewHelperTest extends UnitTestCase
 {
-    protected GetMimeTypeViewHelper|MockObject $viewHelper = null;
+    protected GetMimeTypeViewHelper|MockObject $viewHelper;
 
     public function testMockRenderEmptyFileArgumentReturnsEmptyString(): void
     {
@@ -39,10 +39,8 @@ class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
         parent::setUp();
 
         $this->viewHelper = $this->getMockBuilder(GetMimeTypeViewHelper::class)
-            ->setMethods(['render'])
+            ->onlyMethods(['render'])
             ->getMock();
-
-        $this->injectDependenciesIntoViewHelper($this->viewHelper);
 
         $this->viewHelper->initializeArguments();
     }

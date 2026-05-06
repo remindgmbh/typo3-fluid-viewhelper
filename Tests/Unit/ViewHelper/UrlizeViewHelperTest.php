@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\Tests\Unit\ViewHelper;
 
+use PHPUnit\Framework\MockObject\MockObject;
 use Remind\RmndViewHelper\ViewHelper\UrlizeViewHelper;
-use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Description of UrlizeViewHelperTest
  */
-class UrlizeViewHelperTest extends ViewHelperBaseTestcase
+class UrlizeViewHelperTest extends UnitTestCase
 {
-    protected GetMimeTypeViewHelper|MockObject $viewHelper = null;
+    protected UrlizeViewHelper&MockObject $viewHelper;
 
     public function testMockRenderEmptyArgumentReturnsEmptyString(): void
     {
@@ -39,10 +40,8 @@ class UrlizeViewHelperTest extends ViewHelperBaseTestcase
         parent::setUp();
 
         $this->viewHelper = $this->getMockBuilder(UrlizeViewHelper::class)
-            ->setMethods(['render'])
+            ->onlyMethods(['render'])
             ->getMock();
-
-        $this->injectDependenciesIntoViewHelper($this->viewHelper);
 
         $this->viewHelper->initializeArguments();
     }
@@ -50,7 +49,6 @@ class UrlizeViewHelperTest extends ViewHelperBaseTestcase
     protected function tearDown(): void
     {
         parent::tearDown();
-        $this->viewHelper = null;
         unset($this->viewHelper);
     }
 }
