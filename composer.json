@@ -32,10 +32,10 @@
         "sort-packages": true
     },
     "require": {
-        "php": "^7.4.0 | ^8.0.0",
-        "remind/typo3-utilities": "^2.0.0 | dev-master | dev-develop",
-        "typo3/cms-core": "^10.4.0 | ^11.5.0 | ^12.4.0",
-        "typo3fluid/fluid": "^2.6.0"
+        "php": "^8.0.0",
+        "remind/typo3-utilities": "^3.0.0 | dev-master | dev-develop",
+        "typo3/cms-core": "^12.4.0 || ^13.4.0",
+        "typo3fluid/fluid": "^4.5.0"
     },
     "require-dev": {
         "phpmd/phpmd": "^2.10.2",

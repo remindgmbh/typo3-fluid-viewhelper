@@ -13,9 +13,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class YouTubeIdViewHelper extends AbstractViewHelper
 {
-    /**
-     * @var string
-     */
     public const ARGUMENT_URL = 'url';
 
     /**

@@ -4,34 +4,17 @@ declare(strict_types=1);
 
 namespace Remind\RmndViewHelper\Tests\Unit\ViewHelper;
 
-use PHPUnit\Framework\MockObject\MockObject;
 use Remind\RmndViewHelper\ViewHelper\GetMimeTypeViewHelper;
-use TYPO3\TestingFramework\Fluid\Unit\ViewHelpers\ViewHelperBaseTestcase;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
  * Description of GetMimeTypeViewHelperTest
  */
-class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
+class GetMimeTypeViewHelperTest extends UnitTestCase
 {
-    /**
-     * @var GetMimeTypeViewHelper|MockObject
-     */
-    protected $viewHelper = null;
+    protected GetMimeTypeViewHelper|MockObject $viewHelper;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->viewHelper = $this->getMockBuilder(GetMimeTypeViewHelper::class)
-            ->setMethods(['render'])
-            ->getMock();
-
-        $this->injectDependenciesIntoViewHelper($this->viewHelper);
-
-        $this->viewHelper->initializeArguments();
-    }
-
-    public function testMockRenderEmptyFileArgumentReturnsEmptyString()
+    public function testMockRenderEmptyFileArgumentReturnsEmptyString(): void
     {
         $this->viewHelper
             ->expects($this->once())
@@ -41,7 +24,7 @@ class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
         $this->assertSame('', $this->viewHelper->render());
     }
 
-    public function testMockRenderFileArgumentReturnsCorrectMimeType()
+    public function testMockRenderFileArgumentReturnsCorrectMimeType(): void
     {
         $this->viewHelper
             ->expects($this->once())
@@ -49,5 +32,16 @@ class GetMimeTypeViewHelperTest extends ViewHelperBaseTestcase
             ->willReturn('text/x-php');
 
         $this->assertSame('text/x-php', $this->viewHelper->render());
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->viewHelper = $this->getMockBuilder(GetMimeTypeViewHelper::class)
+            ->onlyMethods(['render'])
+            ->getMock();
+
+        $this->viewHelper->initializeArguments();
     }
 }

@@ -12,9 +12,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class HasIpAddressViewHelper extends AbstractViewHelper
 {
-    /**
-     * @var string
-     */
     public const ARGUMENT_IPS = 'ips';
 
     /**
